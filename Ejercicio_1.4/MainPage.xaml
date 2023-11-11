@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ejercicio_1._4.MainPage"
+             xmlns:conver="clr-namespace:Ejercicio_1._4.Controllers">
+
+    <ContentPage.Resources>
+        <conver:ByteArrayImage x:Key="ByteArray" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <CollectionView x:Name="list"
+                        SelectionMode="Single"
+                        SelectionChanged="list_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout Grid.Column="0" HorizontalOptions="FillAndExpand" Padding="10">
+                                <Frame CornerRadius="10" Padding="0" Background="transparent" HeightRequest="150" WidthRequest="300">
+                                    <Image Aspect="AspectFill"
+                               Source="{Binding imagen, Converter={StaticResource ByteArray}}" />
+                                </Frame>
+                                <Label Grid.Column="1" VerticalTextAlignment="Center" Text="{Binding descripcion}" LineBreakMode="WordWrap" WidthRequest="300" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="DarkBlue" FontSize="Body" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20">
+                <Button Text="Agregar" HorizontalOptions="FillAndExpand" x:Name="btnInsertar" Clicked="btnInsertar_Clicked" Background="green" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ejercicio_1._4.Views.PageModalImage"
+             xmlns:conver="clr-namespace:Ejercicio_1._4.Controllers">
+
+    <ContentPage.Resources>
+        <conver:ByteArrayImage x:Key="ByteArray" />
+    </ContentPage.Resources>
+
+    <StackLayout Margin="20">
+        <Frame CornerRadius="10" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Image Aspect="AspectFill"
+Source="{Binding imagen, Converter={StaticResource ByteArray}}" />
+        </Frame>
+
+        <Button x:Name="btnCerrar" Clicked="btnCerrar_Clicked" Text="Cerrar" Margin="50" />
+    </StackLayout>
+</ContentPage>
